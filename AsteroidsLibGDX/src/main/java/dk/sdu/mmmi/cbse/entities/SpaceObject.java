@@ -1,6 +1,6 @@
-package com.neet.entities;
+package dk.sdu.mmmi.cbse.entities;
 
-import com.neet.main.Game;
+import dk.sdu.mmmi.cbse.main.Game;
 
 public class SpaceObject {
 	

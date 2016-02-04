@@ -1,4 +1,4 @@
-package com.neet.managers;
+package dk.sdu.mmmi.cbse.managers;
 
 public class GameKeys {
 	

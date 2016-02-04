@@ -1,9 +1,9 @@
-package com.neet.entities;
+package dk.sdu.mmmi.cbse.entities;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
-import com.neet.main.Game;
+import dk.sdu.mmmi.cbse.main.Game;
 
 public class Player extends SpaceObject {
 	

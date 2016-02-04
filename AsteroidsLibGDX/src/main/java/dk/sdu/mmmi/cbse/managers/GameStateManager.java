@@ -1,7 +1,7 @@
-package com.neet.managers;
+package dk.sdu.mmmi.cbse.managers;
 
-import com.neet.gamestates.GameState;
-import com.neet.gamestates.PlayState;
+import dk.sdu.mmmi.cbse.gamestates.GameState;
+import dk.sdu.mmmi.cbse.gamestates.PlayState;
 
 public class GameStateManager {
 	

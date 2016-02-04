@@ -1,4 +1,4 @@
-package com.neet.managers;
+package dk.sdu.mmmi.cbse.managers;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Input.Keys;

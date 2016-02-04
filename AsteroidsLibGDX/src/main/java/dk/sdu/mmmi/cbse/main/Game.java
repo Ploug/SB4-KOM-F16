@@ -1,12 +1,12 @@
-package com.neet.main;
+package dk.sdu.mmmi.cbse.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.neet.managers.GameInputProcessor;
-import com.neet.managers.GameKeys;
-import com.neet.managers.GameStateManager;
+import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
+import dk.sdu.mmmi.cbse.managers.GameKeys;
+import dk.sdu.mmmi.cbse.managers.GameStateManager;
 
 public class Game implements ApplicationListener {
 	

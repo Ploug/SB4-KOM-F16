@@ -1,9 +1,9 @@
-package com.neet.gamestates;
+package dk.sdu.mmmi.cbse.gamestates;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.neet.entities.Player;
-import com.neet.managers.GameKeys;
-import com.neet.managers.GameStateManager;
+import dk.sdu.mmmi.cbse.entities.Player;
+import dk.sdu.mmmi.cbse.managers.GameKeys;
+import dk.sdu.mmmi.cbse.managers.GameStateManager;
 
 public class PlayState extends GameState {
 	
