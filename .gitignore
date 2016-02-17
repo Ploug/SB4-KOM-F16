@@ -2,3 +2,8 @@
 /AsteroidsEntity/Common/target/
 /AsteroidsEntity/Core/target/
 /AsteroidsEntity/Player/target/
+rebel.xml
+AsteroidsLibGDX/target/
+AsteroidsServiceLoader/Core/target/
+AsteroidsServiceLoader/Common/target/
+AsteroidsServiceLoader/Player/target/
