@@ -1,6 +1,8 @@
 package dk.sdu.mmmi.cbse.common.data;
 
-public class GameData {
+import java.io.Serializable;
+
+public class GameData implements Serializable {
     private float delta;
     private int displayWidth;
     private int displayHeight;

@@ -18,6 +18,7 @@ public class Game implements ApplicationListener {
 	
 	private GameStateManager gsm;
 	
+        @Override
 	public void create() {
 		
 		WIDTH = Gdx.graphics.getWidth();
@@ -45,6 +46,7 @@ public class Game implements ApplicationListener {
 		
 	}
 	
+        @Override
 	public void render() {
 		
 		// clear screen to black
@@ -58,9 +60,13 @@ public class Game implements ApplicationListener {
 		
 	}
 	
+        @Override
 	public void resize(int width, int height) {}
+        @Override
 	public void pause() {}
+        @Override
 	public void resume() {}
+        @Override
 	public void dispose() {}
 	
 }
