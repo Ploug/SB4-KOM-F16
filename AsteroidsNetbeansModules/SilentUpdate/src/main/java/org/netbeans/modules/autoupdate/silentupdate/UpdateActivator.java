@@ -12,13 +12,13 @@ import org.openide.modules.ModuleInstall;
  * Manages a module's lifecycle. Remember that an installer is optional and
  * often not needed at all.
  */
-public class Activator extends ModuleInstall {
+public class UpdateActivator extends ModuleInstall {
 
     private final ScheduledExecutorService exector = Executors.newScheduledThreadPool(1);
 
     @Override
     public void restored() {
-        exector.scheduleAtFixedRate(doCheck, 10000, 10000, TimeUnit.MILLISECONDS);
+        exector.scheduleAtFixedRate(doCheck, 5000, 5000, TimeUnit.MILLISECONDS);
     }
 
     private static final Runnable doCheck = new Runnable() {
@@ -30,5 +30,10 @@ public class Activator extends ModuleInstall {
         }
 
     };
+
+    @Override
+    public void uninstalled() {
+        super.uninstalled(); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

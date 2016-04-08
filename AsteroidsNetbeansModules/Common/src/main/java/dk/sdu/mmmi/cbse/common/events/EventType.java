@@ -12,5 +12,5 @@ import java.io.Serializable;
  * @author Mads
  */
 public enum EventType implements Serializable{
-    PLAYER_SHOOT, ENEMY_SHOOT;
+    PLAYER_SHOOT, ENEMY_SHOOT, ASTEROID_SPLIT;
 }
