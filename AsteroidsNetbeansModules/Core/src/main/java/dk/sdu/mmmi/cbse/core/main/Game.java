@@ -11,26 +11,27 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
 
-public class Game implements ApplicationListener {
+public class Game implements ApplicationListener
+{
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
     private final Lookup lookup = Lookup.getDefault();
     private final GameData gameData = new GameData();
     private Map<String, Entity> world = new ConcurrentHashMap<>();
-    private List<IGamePluginService> gamePlugins = new CopyOnWriteArrayList<>();
+    private Set<IGamePluginService> gamePlugins;
     private Lookup.Result<IGamePluginService> result;
 
     @Override
-    public void create() {
+    public void create()
+    {
         gameData.setDisplayWidth(Gdx.graphics.getWidth());
         gameData.setDisplayHeight(Gdx.graphics.getHeight());
 
@@ -44,16 +45,19 @@ public class Game implements ApplicationListener {
 
         result = lookup.lookupResult(IGamePluginService.class);
         result.addLookupListener(lookupListener);
+        gamePlugins = ConcurrentHashMap.newKeySet();
+        gamePlugins.addAll(result.allInstances());
         result.allItems();
+        for (IGamePluginService plugin : gamePlugins)
+        {
+            plugin.start(gameData, world);
+        }
 
-//        for (IGamePluginService plugin : gamePlugins) {
-//            plugin.start(gameData, world);
-//            gamePlugins.add(plugin);
-//        }
     }
 
     @Override
-    public void render() {
+    public void render()
+    {
         // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -65,17 +69,22 @@ public class Game implements ApplicationListener {
         draw();
     }
 
-    private void update() {
+    private void update()
+    {
         // Update
-        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
-            for (Entity e : world.values()) {
+        for (IEntityProcessingService entityProcessorService : getEntityProcessingServices())
+        {
+            for (Entity e : world.values())
+            {
                 entityProcessorService.process(gameData, world, e);
             }
         }
     }
 
-    private void draw() {
-        for (Entity entity : world.values()) {
+    private void draw()
+    {
+        for (Entity entity : world.values())
+        {
             sr.setColor(1, 1, 1, 1);
 
             sr.begin(ShapeRenderer.ShapeType.Line);
@@ -85,7 +94,8 @@ public class Game implements ApplicationListener {
 
             for (int i = 0, j = shapex.length - 1;
                     i < shapex.length;
-                    j = i++) {
+                    j = i++)
+            {
 
                 sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
             }
@@ -95,47 +105,52 @@ public class Game implements ApplicationListener {
     }
 
     @Override
-    public void resize(int width, int height) {
+    public void resize(int width, int height)
+    {
     }
 
     @Override
-    public void pause() {
+    public void pause()
+    {
     }
 
     @Override
-    public void resume() {
+    public void resume()
+    {
     }
 
     @Override
-    public void dispose() {
+    public void dispose()
+    {
     }
 
-    private Collection<? extends IEntityProcessingService> getEntityProcessingServices() {
+    private Collection<? extends IEntityProcessingService> getEntityProcessingServices()
+    {
         return lookup.lookupAll(IEntityProcessingService.class);
     }
 
-    private final LookupListener lookupListener = new LookupListener() {
+    private final LookupListener lookupListener = new LookupListener()
+    {
         @Override
-        public void resultChanged(LookupEvent le) {
-
-            Collection<? extends IGamePluginService> updated = result.allInstances();
-
-            for (IGamePluginService us : updated) {
-                // Newly installed modules
-                if (!gamePlugins.contains(us)) {
-                    us.start(gameData, world);
-                    gamePlugins.add(us);
+        public void resultChanged(LookupEvent le)
+        {
+            Collection<IGamePluginService> updatedPlugins = (Collection<IGamePluginService>)lookup.lookupAll(IGamePluginService.class);
+            for (IGamePluginService updatedPlugin : updatedPlugins)
+            {
+                if (!gamePlugins.contains(updatedPlugin))
+                {
+                    updatedPlugin.start(gameData, world);
+                    gamePlugins.add(updatedPlugin);
                 }
             }
 
-            // Stop and remove module
-            for (IGamePluginService gs : gamePlugins) {
-                if (!updated.contains(gs)) {
-                    gs.stop(gameData);
-                    gamePlugins.remove(gs);
+            for (IGamePluginService oldPlugin : gamePlugins)
+            {
+                if (!updatedPlugins.contains(oldPlugin))
+                {
+                    gamePlugins.remove(oldPlugin);
                 }
             }
         }
-
     };
 }
