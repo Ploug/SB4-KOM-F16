@@ -148,6 +148,7 @@ public class Game implements ApplicationListener
             {
                 if (!updatedPlugins.contains(oldPlugin))
                 {
+                    oldPlugin.stop(gameData);
                     gamePlugins.remove(oldPlugin);
                 }
             }

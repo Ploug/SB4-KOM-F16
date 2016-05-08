@@ -17,9 +17,11 @@ import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
 @ServiceProvider(service = IEntityProcessingService.class)
-public class PlayerControlSystem implements IEntityProcessingService {
+public class PlayerControlSystem implements IEntityProcessingService
+{
     @Override
-    public void process(GameData gameData, Map<String, Entity> world, Entity entity) {
+    public void process(GameData gameData, Map<String, Entity> world, Entity entity)
+    {
         float x = entity.getX();
         float y = entity.getY();
         float dt = gameData.getDelta();
@@ -31,53 +33,66 @@ public class PlayerControlSystem implements IEntityProcessingService {
         float radians = entity.getRadians();
         float rotationSpeed = entity.getRotationSpeed();
 
-        if (entity.getType().equals(PLAYER)) {
+        if (entity.getType().equals(PLAYER))
+        {
             // turning
-            if (gameData.getKeys().isDown(LEFT)) {
+            if (gameData.getKeys().isDown(LEFT))
+            {
                 radians += rotationSpeed * dt;
             }
-            
-            if (gameData.getKeys().isDown(RIGHT)) {
+
+            if (gameData.getKeys().isDown(RIGHT))
+            {
                 radians -= rotationSpeed * dt;
             }
-            
+
             //Shoot
-            if(gameData.getKeys().isDown(SPACE)){
+            if (gameData.getKeys().isDown(SPACE))
+            {
                 gameData.addEvent(new Event(EventType.PLAYER_SHOOT));
             }
 
-            // accelerating            
-            if (gameData.getKeys().isDown(UP)) {
+            // accelerating
+            if (gameData.getKeys().isDown(UP))
+            {
                 dx += cos(radians) * acceleration * dt;
                 dy += sin(radians) * acceleration * dt;
             }
 
             // deceleration
-            float vec = (float) sqrt(dx * dx + dy * dy);
-            if (vec > 0) {
+            float vec = (float)sqrt(dx * dx + dy * dy);
+            if (vec > 0)
+            {
                 dx -= (dx / vec) * deceleration * dt;
                 dy -= (dy / vec) * deceleration * dt;
             }
-            if (vec > maxSpeed) {
+            if (vec > maxSpeed)
+            {
                 dx = (dx / vec) * maxSpeed;
                 dy = (dy / vec) * maxSpeed;
             }
 
             // set position
             x += dx * dt;
-            if(x > gameData.getDisplayWidth()){
+            if (x > gameData.getDisplayWidth())
+            {
                 x = 0;
-            }else if(x < 0){
+            }
+            else if (x < 0)
+            {
                 x = gameData.getDisplayWidth();
             }
-            
+
             y += dy * dt;
-            if(y > gameData.getDisplayHeight()){
+            if (y > gameData.getDisplayHeight())
+            {
                 y = 0;
-            }else if(y < 0){
+            }
+            else if (y < 0)
+            {
                 y = gameData.getDisplayHeight();
             }
-            
+
             // Update entity
             entity.setPosition(x, y);
             entity.setDx(dx);
@@ -88,24 +103,25 @@ public class PlayerControlSystem implements IEntityProcessingService {
         }
     }
 
-    private void updateShape(Entity entity) {
+    private void updateShape(Entity entity)
+    {
         float[] shapex = entity.getShapeX();
         float[] shapey = entity.getShapeY();
         float x = entity.getX();
         float y = entity.getY();
         float radians = entity.getRadians();
 
-        shapex[0] = (float) (x + Math.cos(radians) * 8);
-        shapey[0] = (float) (y + Math.sin(radians) * 8);
+        shapex[0] = (float)(x + Math.cos(radians) * 8);
+        shapey[0] = (float)(y + Math.sin(radians) * 8);
 
-        shapex[1] = (float) (x + Math.cos(radians - 4 * 3.1415f / 5) * 8);
-        shapey[1] = (float) (y + Math.sin(radians - 4 * 3.1145f / 5) * 8);
+        shapex[1] = (float)(x + Math.cos(radians - 4 * 3.1415f / 5) * 8);
+        shapey[1] = (float)(y + Math.sin(radians - 4 * 3.1145f / 5) * 8);
 
-        shapex[2] = (float) (x + Math.cos(radians + 3.1415f) * 5);
-        shapey[2] = (float) (y + Math.sin(radians + 3.1415f) * 5);
+        shapex[2] = (float)(x + Math.cos(radians + 3.1415f) * 5);
+        shapey[2] = (float)(y + Math.sin(radians + 3.1415f) * 5);
 
-        shapex[3] = (float) (x + Math.cos(radians + 4 * 3.1415f / 5) * 8);
-        shapey[3] = (float) (y + Math.sin(radians + 4 * 3.1415f / 5) * 8);
+        shapex[3] = (float)(x + Math.cos(radians + 4 * 3.1415f / 5) * 8);
+        shapey[3] = (float)(y + Math.sin(radians + 4 * 3.1415f / 5) * 8);
 
         entity.setShapeX(shapex);
         entity.setShapeY(shapey);
