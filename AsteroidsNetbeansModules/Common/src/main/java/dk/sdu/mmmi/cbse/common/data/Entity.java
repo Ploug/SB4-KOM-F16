@@ -3,14 +3,14 @@ package dk.sdu.mmmi.cbse.common.data;
 import java.io.Serializable;
 import java.util.UUID;
 
-public final class Entity implements Serializable {
+public final class Entity implements Serializable
+{
     private final UUID ID = UUID.randomUUID();
     private EntityType type;
     private float x;
     private float y;
-    private float dx;
-    private float dy;
-    private float radians;
+    private Vector2 velocity;
+    private Vector2 orientation;
     private float maxSpeed;
     private float acceleration;
     private float deacceleration;
@@ -21,145 +21,170 @@ public final class Entity implements Serializable {
     private float radius;
     private boolean isHit = false;
     private float expiration;
-    
-    public void reduceExpiration(float delta){
+
+    public void reduceExpiration(float delta)
+    {
         this.expiration -= delta;
     }
-    
-    public float getExpiration(){
+
+    public float getExpiration()
+    {
         return expiration;
     }
-    
-    public void setExpiration(float value){
+
+    public void setExpiration(float value)
+    {
         this.expiration = value;
     }
-    
-    public boolean getIsHit(){
+
+    public boolean getIsHit()
+    {
         return isHit;
     }
-    
-    public void setIsHit(boolean hit){
+
+    public void setIsHit(boolean hit)
+    {
         this.isHit = hit;
     }
-    
-    public void setRadius(float r){
+
+    public void setRadius(float r)
+    {
         this.radius = r;
     }
-    
-    public float getRadius(){
+
+    public float getRadius()
+    {
         return radius;
     }
-    
-    public int getLife(){
+
+    public int getLife()
+    {
         return life;
     }
-    
-    public void setLife(int life){
+
+    public void setLife(int life)
+    {
         this.life = life;
     }
 
-    public String getID() {
+    public String getID()
+    {
         return ID.toString();
     }
 
-    public void setType(EntityType type) {
+    public void setType(EntityType type)
+    {
         this.type = type;
     }
 
-    public EntityType getType() {
+    public EntityType getType()
+    {
         return type;
     }
 
-    public float getDx() {
-        return dx;
+    public void setOrientation(Vector2 orientation)
+    {
+        this.orientation = orientation;
     }
 
-    public void setDx(float dx) {
-        this.dx = dx;
+    public Vector2 getOrientation()
+    {
+        return orientation;
     }
 
-    public float getDy() {
-        return dy;
+    public void setVelocity(Vector2 velocity)
+    {
+        this.velocity = velocity;
     }
 
-    public void setDy(float dy) {
-        this.dy = dy;
+    public Vector2 getVelocity()
+    {
+        return velocity;
     }
 
-    public float getX() {
+    public float getX()
+    {
         return x;
     }
-    
-    public void setX(float x){
+
+    public void setX(float x)
+    {
         this.x = x;
     }
 
-    public float getY() {
+    public float getY()
+    {
         return y;
     }
-    
-    public void setY(float y){
+
+    public void setY(float y)
+    {
         this.y = y;
     }
 
-    public void setPosition(float x, float y) {
+    public void setPosition(float x, float y)
+    {
         this.x = x;
         this.y = y;
     }
 
-    public float getRadians() {
-        return radians;
-    }
-
-    public void setRadians(float radians) {
-        this.radians = radians;
-    }
-
-    public float getMaxSpeed() {
+    public float getMaxSpeed()
+    {
         return maxSpeed;
     }
 
-    public void setMaxSpeed(float maxSpeed) {
+    public void setMaxSpeed(float maxSpeed)
+    {
         this.maxSpeed = maxSpeed;
     }
 
-    public float getAcceleration() {
+    public float getAcceleration()
+    {
         return acceleration;
     }
 
-    public void setAcceleration(float acceleration) {
+    public void setAcceleration(float acceleration)
+    {
         this.acceleration = acceleration;
     }
 
-    public float getDeacceleration() {
+    public float getDeacceleration()
+    {
         return deacceleration;
     }
 
-    public void setDeacceleration(float deacceleration) {
+    public void setDeacceleration(float deacceleration)
+    {
         this.deacceleration = deacceleration;
     }
 
-    public float[] getShapeX() {
+    public float[] getShapeX()
+    {
         return shapeX;
     }
 
-    public void setShapeX(float[] shapeX) {
+    public void setShapeX(float[] shapeX)
+    {
         this.shapeX = shapeX;
     }
 
-    public float[] getShapeY() {
+    public float[] getShapeY()
+    {
         return shapeY;
     }
 
-    public void setShapeY(float[] shapeY) {
+    public void setShapeY(float[] shapeY)
+    {
         this.shapeY = shapeY;
     }
 
-    public int getRotationSpeed() {
+    public int getRotationSpeed()
+    {
         return rotationSpeed;
     }
 
-    public void setRotationSpeed(int rotationSpeed) {
+    public void setRotationSpeed(int rotationSpeed)
+    {
         this.rotationSpeed = rotationSpeed;
     }
 

@@ -54,19 +54,26 @@ public class Game implements ApplicationListener
         }
 
     }
+    long timeBefore = System.currentTimeMillis();
 
     @Override
     public void render()
     {
+        System.out.println("Render took: " + (System.currentTimeMillis() - timeBefore) + " ms");
+
         // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         gameData.setDelta(Gdx.graphics.getDeltaTime());
         gameData.getKeys().update();
-
+        timeBefore = System.currentTimeMillis();
         update();
+        System.out.println("Update took: " + (System.currentTimeMillis() - timeBefore) + " ms");
+        timeBefore = System.currentTimeMillis();
         draw();
+        System.out.println("Draw took: " + (System.currentTimeMillis() - timeBefore) + " ms");
+        timeBefore = System.currentTimeMillis();
     }
 
     private void update()

@@ -19,13 +19,11 @@ public class PhysicsPlugin implements IGamePlugin
     @Override
     public void start(GameData gameData, Map<String, Entity> world)
     {
-        System.out.println("STARTED PHYSICS IMPLENTATION PLUGIN");
     }
 
     @Override
     public void stop(GameData gameData)
     {
-        System.out.println("STOPPED PHYSICS IMPLENTATION PLUGIN");
     }
 
 }
