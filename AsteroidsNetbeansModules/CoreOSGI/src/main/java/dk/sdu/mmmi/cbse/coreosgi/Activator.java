@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.physicsimpl;
+package dk.sdu.mmmi.cbse.coreosgi;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

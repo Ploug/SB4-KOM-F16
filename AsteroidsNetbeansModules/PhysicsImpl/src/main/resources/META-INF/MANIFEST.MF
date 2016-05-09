@@ -1,0 +1,3 @@
+Bundle-SymbolicName: PhysicsImpl
+Bundle-ActivationPolicy: lazy
+Service-Component: META-INF/processorCompo.xml, META-INF/pluginCompo.xml

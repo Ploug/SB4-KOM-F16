@@ -16,3 +16,8 @@ AsteroidsServiceLoader/Player/target/
 /AsteroidsNetbeansModules/JavaApplication15/nbproject/private/
 /AsteroidsNetbeansModules/JavaApplication15/build/
 /AsteroidsNetbeansModules/JavaApplication15/dist/
+/AsteroidsNetbeansModules/GamePluginSPI/target/
+/AsteroidsNetbeansModules/PhysicsImpl/target/
+/AsteroidsNetbeansModules/PhysicsClient/target/
+/AsteroidsNetbeansModules/PhysicsLauncher/target/
+/AsteroidsNetbeansModules/EntityProcessorSPI/target/

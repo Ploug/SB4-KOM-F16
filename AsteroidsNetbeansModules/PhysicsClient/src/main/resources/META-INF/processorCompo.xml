@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="processor" immediate="true">
+   <implementation class="dk.sdu.mmmi.cbse.physicsclient.PhysicsProcessActivate"/>
+   <reference bind="gotProcessorService" cardinality="1..1" interface="dk.sdu.mmmi.cbse.entityprocessorspi.IEntityProcessor" name="IEntityProcessor" policy="dynamic" unbind="lostProcessorService"/>
+   
+ </scr:component>

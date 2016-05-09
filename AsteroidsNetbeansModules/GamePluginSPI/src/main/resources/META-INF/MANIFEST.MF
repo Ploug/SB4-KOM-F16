@@ -1,0 +1,3 @@
+Bundle-SymbolicName: GamePluginSPI
+Bundle-ActivationPolicy: lazy
+Export-Package: dk.sdu.mmmi.cbse.gamepluginspi

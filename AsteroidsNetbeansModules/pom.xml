@@ -62,6 +62,10 @@
         <module>SilentUpdate</module>
         <module>application</module>
         <module>PhysicsImpl</module>
+        <module>GamePluginSPI</module>
+        <module>PhysicsLauncher</module>
+        <module>PhysicsClient</module>
+    <module>EntityProcessorSPI</module>
   </modules>
 
     <properties>
