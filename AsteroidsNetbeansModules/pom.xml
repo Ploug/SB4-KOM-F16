@@ -33,6 +33,7 @@
                     <configuration>
                         <brandingToken>${brandingToken}</brandingToken>
                         <cluster>${brandingToken}</cluster>
+                        <useOSGiDependencies>true</useOSGiDependencies>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -56,16 +57,15 @@
 
     <modules>
         <module>branding</module>
-        <module>Common</module>
         <module>Core</module>
         <module>Player</module>
         <module>SilentUpdate</module>
         <module>application</module>
         <module>PhysicsImpl</module>
-        <module>GamePluginSPI</module>
-        <module>PhysicsLauncher</module>
         <module>PhysicsClient</module>
-    <module>EntityProcessorSPI</module>
+    <module>OSGICommon</module>
+        <module>PhysicsWrapper</module>
+    <module>Asteroid</module>
   </modules>
 
     <properties>

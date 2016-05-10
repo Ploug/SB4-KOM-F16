@@ -1,10 +1,10 @@
 package dk.sdu.mmmi.cbse.player;
 
-import dk.sdu.mmmi.cbse.common.data.Entity;
-import static dk.sdu.mmmi.cbse.common.data.EntityType.PLAYER;
-import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.data.Vector2;
-import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.PLAYER;
+import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
+import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
+import dk.sdu.mmmi.cbse.osgicommon.services.IGamePluginService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
@@ -42,8 +42,8 @@ public class EntityPlugin implements IGamePluginService
         playerShip.setShapeX(new float[4]);
         playerShip.setShapeY(new float[4]);
         playerShip.setVelocity(new Vector2(0, 0));
-        playerShip.setOrientation(new Vector2(0, 1));
-        playerShip.setRotationSpeed(5);
+        playerShip.setOrientation(new Vector2(1, 0));
+        playerShip.setRotationSpeed(180);
 
         playerShip.setLife(1);
 

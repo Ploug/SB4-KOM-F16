@@ -1,0 +1,3 @@
+Bundle-SymbolicName: CommonBundle
+Bundle-ActivationPolicy: lazy
+Export-Package: dk.sdu.mmmi.cbse.osgicommon.services

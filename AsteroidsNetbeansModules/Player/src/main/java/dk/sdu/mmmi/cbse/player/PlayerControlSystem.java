@@ -1,16 +1,16 @@
 package dk.sdu.mmmi.cbse.player;
 
-import dk.sdu.mmmi.cbse.common.data.Entity;
-import static dk.sdu.mmmi.cbse.common.data.EntityType.PLAYER;
-import dk.sdu.mmmi.cbse.common.data.GameData;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
-import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
-import dk.sdu.mmmi.cbse.common.data.Vector2;
-import dk.sdu.mmmi.cbse.common.events.Event;
-import dk.sdu.mmmi.cbse.common.events.EventType;
-import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.PLAYER;
+import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
+import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.LEFT;
+import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.RIGHT;
+import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.SPACE;
+import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.UP;
+import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
+import dk.sdu.mmmi.cbse.osgicommon.events.Event;
+import dk.sdu.mmmi.cbse.osgicommon.events.EventType;
+import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
@@ -22,7 +22,7 @@ public class PlayerControlSystem implements IEntityProcessingService
     {
         float dt = gameData.getDelta();
         Vector2 velocity = entity.getVelocity();
-        Vector2 orientation = entity.getVelocity();
+        Vector2 orientation = entity.getOrientation();
         float acceleration = entity.getAcceleration();
         float deceleration = entity.getDeacceleration();
         float maxSpeed = entity.getMaxSpeed();
@@ -30,7 +30,6 @@ public class PlayerControlSystem implements IEntityProcessingService
 
         if (entity.getType().equals(PLAYER))
         {
-            System.out.println("hej");
             // turning
             if (gameData.getKeys().isDown(LEFT))
             {
@@ -51,11 +50,9 @@ public class PlayerControlSystem implements IEntityProcessingService
             // accelerating
             if (gameData.getKeys().isDown(UP))
             {
-                System.out.println("velocity before: " + velocity);
                 Vector2 accelerationVec = new Vector2(orientation);
                 accelerationVec.setMagnitude(acceleration * dt);
                 velocity.addVector(accelerationVec);
-                System.out.println("velocity after: " + velocity);
             }
 
             // deceleration
@@ -79,7 +76,7 @@ public class PlayerControlSystem implements IEntityProcessingService
         float[] shapey = entity.getShapeY();
         float x = entity.getX();
         float y = entity.getY();
-        double radians = Math.toRadians(entity.getVelocity().getAngle());
+        double radians = Math.toRadians(entity.getOrientation().getAngle());
 
         shapex[0] = (float)(x + Math.cos(radians) * 8);
         shapey[0] = (float)(y + Math.sin(radians) * 8);

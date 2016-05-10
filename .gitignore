@@ -21,3 +21,8 @@ AsteroidsServiceLoader/Player/target/
 /AsteroidsNetbeansModules/PhysicsClient/target/
 /AsteroidsNetbeansModules/PhysicsLauncher/target/
 /AsteroidsNetbeansModules/EntityProcessorSPI/target/
+/AsteroidsNetbeansModules/CommonOSGI/target/
+/AsteroidsNetbeansModules/Common/Common/target/
+/AsteroidsNetbeansModules/Asteroid/target/
+/AsteroidsNetbeansModules/OSGICommon/target/
+/AsteroidsNetbeansModules/PhysicsWrapper/target/

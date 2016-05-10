@@ -5,11 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.common.data.Entity;
-import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
+import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
+import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.osgicommon.services.IGamePluginService;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -59,7 +59,6 @@ public class Game implements ApplicationListener
     @Override
     public void render()
     {
-        System.out.println("Render took: " + (System.currentTimeMillis() - timeBefore) + " ms");
 
         // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -67,13 +66,8 @@ public class Game implements ApplicationListener
 
         gameData.setDelta(Gdx.graphics.getDeltaTime());
         gameData.getKeys().update();
-        timeBefore = System.currentTimeMillis();
         update();
-        System.out.println("Update took: " + (System.currentTimeMillis() - timeBefore) + " ms");
-        timeBefore = System.currentTimeMillis();
         draw();
-        System.out.println("Draw took: " + (System.currentTimeMillis() - timeBefore) + " ms");
-        timeBefore = System.currentTimeMillis();
     }
 
     private void update()

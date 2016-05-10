@@ -5,17 +5,17 @@
  */
 package dk.sdu.mmmi.cbse.physicsimpl;
 
-import dk.sdu.mmmi.cbse.common.data.Entity;
-import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.data.Vector2;
-import dk.sdu.mmmi.cbse.entityprocessorspi.IEntityProcessor;
+import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
+import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
+import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
 import java.util.Map;
 
 /**
  *
  * @author Frederik
  */
-public class PhysicsProcessor implements IEntityProcessor
+public class PhysicsProcessor implements IEntityProcessingService
 {
     @Override
     public void process(GameData gameData, Map<String, Entity> world, Entity entity)
@@ -23,10 +23,70 @@ public class PhysicsProcessor implements IEntityProcessor
         float x = entity.getX();
         float y = entity.getY();
         float dt = gameData.getDelta();
-        // Movement
+        //Wrap
+        if (x > gameData.getDisplayWidth())
+        {
+            x = 0;
+        }
+        else if (x < 0)
+        {
+            x = gameData.getDisplayWidth();
+        }
+        if (y > gameData.getDisplayHeight())
+        {
+            y = 0;
+        }
+        else if (y < 0)
+        {
+            y = gameData.getDisplayHeight();
+        }
+
+        //Movement
         Vector2 velocity = entity.getVelocity();
-        entity.setX((float)(x + velocity.getX() * dt));
-        entity.setY((float)(y + velocity.getY() * dt));
+        x = (float)(x + velocity.getX() * dt);
+        y = (float)(y + velocity.getY() * dt);
+
+        //Collision
+        for (Entity ent : world.values())
+        {
+            if (ent.getID().equals(entity.getID()))
+            {
+                continue;
+            }
+            if (contains(entity, ent.getShapeX(), ent.getShapeY()))
+            {
+                entity.setIsHit(true);
+                ent.setIsHit(true);
+            }
+        }
+
+        entity.setX(x);
+        entity.setY(y);
+
     }
 
+    private boolean contains(Entity entity, float[] otherShapex, float[] otherShapey)
+    {
+        float[] shapex = entity.getShapeX();
+        float[] shapey = entity.getShapeY();
+        boolean b = false;
+        for (int k = 0; k < otherShapex.length; k++)
+        {
+            for (int i = 0, j = shapex.length - 1; i < shapex.length; j = i++)
+            {
+                if ((shapey[i] > otherShapey[k]) != (shapey[j] > otherShapey[k])
+                        && (otherShapex[k] < (shapex[j] - shapex[i])
+                        * (otherShapey[k] - shapey[i]) / (shapey[j] - shapey[i])
+                        + shapex[i]))
+                {
+                    b = !b;
+                }
+            }
+            if (b)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

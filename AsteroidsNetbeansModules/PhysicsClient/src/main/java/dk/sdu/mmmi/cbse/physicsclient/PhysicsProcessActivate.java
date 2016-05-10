@@ -5,7 +5,7 @@
  */
 package dk.sdu.mmmi.cbse.physicsclient;
 
-import dk.sdu.mmmi.cbse.entityprocessorspi.IEntityProcessor;
+import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.ComponentContext;
 
@@ -18,13 +18,13 @@ public class PhysicsProcessActivate
 
     public static ComponentContext context;
     public static ServiceReference processorReference;
-    public static IEntityProcessor physicsProcessor;
+    public static IEntityProcessingService physicsProcessor;
 
     public void activate(ComponentContext context)
     {
         if (processorReference != null)
         {
-            physicsProcessor = (IEntityProcessor)context.locateService(
+            physicsProcessor = (IEntityProcessingService)context.locateService(
                     "IEntityProcessor", processorReference);
 
         }
@@ -33,13 +33,11 @@ public class PhysicsProcessActivate
 
     public void gotProcessorService(ServiceReference reference)
     {
-        System.out.println("processor Bind Service");
         processorReference = reference;
     }
 
     public void lostProcessorService(ServiceReference reference)
     {
-        System.out.println("processor unbind Service");
         processorReference = null;
     }
 
