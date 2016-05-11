@@ -72,7 +72,7 @@ public class AsteroidPlugin implements IGamePluginService
     {
         for (Entity asteroid : asteroids.values())
         {
-            removeAsteroid(asteroid);
+            world.remove(asteroid.getID());
         }
     }
 
