@@ -11,6 +11,22 @@ public class GameData
     private int displayHeight;
     private final GameKeys keys = new GameKeys();
     private List<Event> events = new CopyOnWriteArrayList();
+    private int score = 0;
+
+    public void increaseScore(int increase)
+    {
+        this.score += increase;
+    }
+
+    public void setScore(int score)
+    {
+        this.score = score;
+    }
+
+    public int getScore()
+    {
+        return this.score;
+    }
 
     public void addEvent(Event e)
     {

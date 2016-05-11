@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.sdu.mmmi.cbse.physicswrapper;
+package dk.sdu.mmmi.cbse.weaponspring;
 
 import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
 import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
 import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.physicsclient.PhysicsProcessActivate;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
@@ -17,14 +16,16 @@ import org.openide.util.lookup.ServiceProvider;
  * @author Frederik
  */
 @ServiceProvider(service = IEntityProcessingService.class)
-public class ProcessWrapper implements IEntityProcessingService
+public class WeaponProcessorWrapper implements IEntityProcessingService
 {
+    public static WeaponProcessor reference;
+
     @Override
     public void process(GameData gameData, Map<String, Entity> world, Entity entity)
     {
-        if (PhysicsProcessActivate.physicsProcessor != null)
+        if (reference != null)
         {
-            PhysicsProcessActivate.physicsProcessor.process(gameData, world, entity);
+            reference.process(gameData, world, entity);
         }
     }
 

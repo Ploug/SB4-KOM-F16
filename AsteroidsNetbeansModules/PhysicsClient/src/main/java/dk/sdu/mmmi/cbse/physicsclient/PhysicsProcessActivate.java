@@ -25,7 +25,7 @@ public class PhysicsProcessActivate
         if (processorReference != null)
         {
             physicsProcessor = (IEntityProcessingService)context.locateService(
-                    "IEntityProcessor", processorReference);
+                    "IEntityProcessingService", processorReference);
 
         }
 

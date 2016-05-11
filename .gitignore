@@ -26,3 +26,7 @@ AsteroidsServiceLoader/Player/target/
 /AsteroidsNetbeansModules/Asteroid/target/
 /AsteroidsNetbeansModules/OSGICommon/target/
 /AsteroidsNetbeansModules/PhysicsWrapper/target/
+/AsteroidsNetbeansModules/AsteroidWrapper/target/
+/AsteroidsNetbeansModules/Weapon/target/
+/AsteroidsNetbeansModules/WeaponSpring/target/
+/AsteroidsNetbeansModules/Enemy/target/

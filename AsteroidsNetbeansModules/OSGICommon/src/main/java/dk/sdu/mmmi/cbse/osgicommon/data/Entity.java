@@ -1,6 +1,8 @@
 package dk.sdu.mmmi.cbse.osgicommon.data;
 
+import java.awt.Color;
 import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 public final class Entity implements Serializable
@@ -18,9 +20,77 @@ public final class Entity implements Serializable
     private float[] shapeY = new float[4];
     private int rotationSpeed;
     private int life;
+    private Set<EntityType> collidableTypes;
     private float radius;
     private boolean isHit = false;
     private float expiration;
+    private float[] shapeDistances;
+    private long birthTime;
+    private boolean isShooting;
+    private long shootTime;
+    private Color color;
+    private Entity parent;
+
+    public Entity getParent()
+    {
+        return this.parent;
+    }
+
+    public void setParent(Entity parent)
+    {
+        this.parent = parent;
+    }
+
+    public Color getColor()
+    {
+        return color;
+    }
+
+    public void setColor(Color color)
+    {
+        this.color = color;
+    }
+
+    public Entity()
+    {
+        birthTime = System.currentTimeMillis();
+
+    }
+
+    public void setIsShooting(boolean shooting)
+    {
+        this.isShooting = shooting;
+    }
+
+    public boolean getIsShooting()
+    {
+        return this.isShooting;
+    }
+
+    public void setShootTime(long shootTime)
+    {
+        this.shootTime = shootTime;
+    }
+
+    public long getShootTime()
+    {
+        return this.shootTime;
+    }
+
+    public long getBirthTime()
+    {
+        return this.birthTime;
+    }
+
+    public void setCollidableTypes(Set<EntityType> collidableTypes)
+    {
+        this.collidableTypes = collidableTypes;
+    }
+
+    public Set<EntityType> getCollidableTypes()
+    {
+        return collidableTypes;
+    }
 
     public void reduceExpiration(float delta)
     {
@@ -181,6 +251,16 @@ public final class Entity implements Serializable
     public int getRotationSpeed()
     {
         return rotationSpeed;
+    }
+
+    public float[] getShapeDistances()
+    {
+        return shapeDistances;
+    }
+
+    public void setShapeDistances(float[] shapeDistances)
+    {
+        this.shapeDistances = shapeDistances;
     }
 
     public void setRotationSpeed(int rotationSpeed)

@@ -6,6 +6,8 @@
 package dk.sdu.mmmi.cbse.physicsimpl;
 
 import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.ASTEROIDS;
+import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.ENEMY;
 import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
 import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
 import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
@@ -49,14 +51,20 @@ public class PhysicsProcessor implements IEntityProcessingService
         //Collision
         for (Entity ent : world.values())
         {
-            if (ent.getID().equals(entity.getID()))
+            long entitySinceBirth = System.currentTimeMillis() - entity.getBirthTime();
+            long entSinceBirth = System.currentTimeMillis() - ent.getBirthTime();
+            Entity parent = ent.getParent();
+            if (parent != null && parent.getID().equals(entity.getID())
+                    || entitySinceBirth < 150 || entSinceBirth < 150 || ent.getID().equals(entity.getID())
+                    || !entity.getCollidableTypes().contains(ent.getType())
+                    || parent != null && parent.getType().equals(ENEMY) && entity.getType().equals(ASTEROIDS))
+
             {
                 continue;
             }
             if (contains(entity, ent.getShapeX(), ent.getShapeY()))
             {
                 entity.setIsHit(true);
-                ent.setIsHit(true);
             }
         }
 

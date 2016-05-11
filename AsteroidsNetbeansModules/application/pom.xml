@@ -93,12 +93,27 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>PhysicsWrapper</artifactId>
+            <artifactId>Core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Core</artifactId>
+            <artifactId>AsteroidWrapper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>WeaponSpring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>Enemy</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>PhysicsWrapper</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -108,7 +123,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Asteroid</artifactId>
+            <artifactId>PhysicsClient</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

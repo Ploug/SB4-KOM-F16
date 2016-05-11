@@ -2,11 +2,15 @@ package dk.sdu.mmmi.cbse.core.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
+import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.PLAYER;
 import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
 import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.osgicommon.services.IGamePluginService;
@@ -23,6 +27,8 @@ public class Game implements ApplicationListener
 
     private static OrthographicCamera cam;
     private ShapeRenderer sr;
+    private SpriteBatch batch;
+    private BitmapFont font;
     private final Lookup lookup = Lookup.getDefault();
     private final GameData gameData = new GameData();
     private Map<String, Entity> world = new ConcurrentHashMap<>();
@@ -40,7 +46,8 @@ public class Game implements ApplicationListener
         cam.update();
 
         sr = new ShapeRenderer();
-
+        batch = new SpriteBatch();
+        font = new BitmapFont();
         Gdx.input.setInputProcessor(new GameInputProcessor(gameData));
 
         result = lookup.lookupResult(IGamePluginService.class);
@@ -81,6 +88,8 @@ public class Game implements ApplicationListener
             }
         }
     }
+    int fpsCount = 0;
+    double deltaTotal = 0;
 
     private void draw()
     {
@@ -89,6 +98,11 @@ public class Game implements ApplicationListener
             sr.setColor(1, 1, 1, 1);
 
             sr.begin(ShapeRenderer.ShapeType.Line);
+            java.awt.Color color = entity.getColor();
+            if (color != null)
+            {
+                sr.setColor(new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()));
+            }
 
             float[] shapex = entity.getShapeX();
             float[] shapey = entity.getShapeY();
@@ -102,7 +116,26 @@ public class Game implements ApplicationListener
             }
 
             sr.end();
+            if (entity.getType() == PLAYER)
+            {
+                batch.begin();
+                font.draw(batch, "Life: " + entity.getLife(), 40, 70);
+                batch.end();
+            }
         }
+        if (fpsCount > 19)
+        {
+            fpsCount = 0;
+            deltaTotal = 0;
+        }
+        fpsCount++;
+        deltaTotal += gameData.getDelta();
+        batch.begin();
+        font.draw(batch, "Fps: " + Math.round(1 / deltaTotal * fpsCount), 40, 100);
+        batch.end();
+        batch.begin();
+        font.draw(batch, "Score: " + gameData.getScore(), 40, 40);
+        batch.end();
     }
 
     @Override

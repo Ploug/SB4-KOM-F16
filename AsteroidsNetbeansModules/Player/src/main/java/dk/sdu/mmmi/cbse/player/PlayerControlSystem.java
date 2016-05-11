@@ -8,8 +8,6 @@ import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.RIGHT;
 import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.SPACE;
 import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.UP;
 import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
-import dk.sdu.mmmi.cbse.osgicommon.events.Event;
-import dk.sdu.mmmi.cbse.osgicommon.events.EventType;
 import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
@@ -44,9 +42,17 @@ public class PlayerControlSystem implements IEntityProcessingService
             //Shoot
             if (gameData.getKeys().isDown(SPACE))
             {
-                gameData.addEvent(new Event(EventType.PLAYER_SHOOT));
+                entity.setIsShooting(true);
             }
-
+            if (entity.getIsHit())
+            {
+                entity.setIsHit(false);
+                entity.setLife(entity.getLife() - 1);
+            }
+            if (entity.getLife() < 0)
+            {
+                world.remove(entity.getID());
+            }
             // accelerating
             if (gameData.getKeys().isDown(UP))
             {
