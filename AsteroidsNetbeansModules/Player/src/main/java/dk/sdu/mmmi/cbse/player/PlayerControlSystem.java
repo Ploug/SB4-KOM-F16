@@ -1,14 +1,14 @@
 package dk.sdu.mmmi.cbse.player;
 
-import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.PLAYER;
-import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
-import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.LEFT;
-import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.RIGHT;
-import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.SPACE;
-import static dk.sdu.mmmi.cbse.osgicommon.data.GameKeys.UP;
-import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
-import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.data.Entity;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.PLAYER;
+import dk.sdu.mmmi.cbse.common.data.GameData;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.LEFT;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.RIGHT;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.SPACE;
+import static dk.sdu.mmmi.cbse.common.data.GameKeys.UP;
+import dk.sdu.mmmi.cbse.common.data.Vector2;
+import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 

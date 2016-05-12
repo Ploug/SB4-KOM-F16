@@ -5,7 +5,7 @@
  */
 package dk.sdu.mmmi.cbse.physicsclient;
 
-import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.ComponentContext;
 

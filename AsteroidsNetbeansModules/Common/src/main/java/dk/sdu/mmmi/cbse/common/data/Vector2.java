@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.osgicommon.data;
+package dk.sdu.mmmi.cbse.common.data;
 
 public class Vector2
 {

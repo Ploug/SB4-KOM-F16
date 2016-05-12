@@ -1,14 +1,14 @@
 package dk.sdu.mmmi.cbse.player;
 
-import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
-import dk.sdu.mmmi.cbse.osgicommon.data.EntityType;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.ASTEROIDS;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.BULLET;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.ENEMY;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.PLAYER;
-import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
-import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
-import dk.sdu.mmmi.cbse.osgicommon.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.EntityType;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.ASTEROIDS;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.BULLET;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.ENEMY;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.PLAYER;
+import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.data.Vector2;
+import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Map;

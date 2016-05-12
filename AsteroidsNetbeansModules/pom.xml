@@ -63,12 +63,12 @@
         <module>application</module>
         <module>PhysicsImpl</module>
         <module>PhysicsClient</module>
-    <module>OSGICommon</module>
         <module>PhysicsWrapper</module>
     <module>Asteroid</module>
         <module>AsteroidWrapper</module>
         <module>WeaponSpring</module>
         <module>Enemy</module>
+        <module>Common</module>
     </modules>
 
     <properties>

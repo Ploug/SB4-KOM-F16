@@ -5,11 +5,11 @@
  */
 package dk.sdu.mmmi.cbse.enemy;
 
-import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
-import static dk.sdu.mmmi.cbse.osgicommon.data.EntityType.ENEMY;
-import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
-import dk.sdu.mmmi.cbse.osgicommon.data.Vector2;
-import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.data.Entity;
+import static dk.sdu.mmmi.cbse.common.data.EntityType.ENEMY;
+import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.data.Vector2;
+import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 

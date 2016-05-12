@@ -5,9 +5,9 @@
  */
 package dk.sdu.mmmi.cbse.weaponspring;
 
-import dk.sdu.mmmi.cbse.osgicommon.data.Entity;
-import dk.sdu.mmmi.cbse.osgicommon.data.GameData;
-import dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 

@@ -2,6 +2,6 @@
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="processorPhysicsImpl">
    <implementation class="dk.sdu.mmmi.cbse.physicsimpl.PhysicsProcessor"/>
    <service>
-      <provide interface="dk.sdu.mmmi.cbse.osgicommon.services.IEntityProcessingService"/>
+      <provide interface="dk.sdu.mmmi.cbse.common.services.IEntityProcessingService"/>
    </service>
 </scr:component>
