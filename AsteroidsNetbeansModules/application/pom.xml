@@ -116,16 +116,6 @@
             <artifactId>PhysicsWrapper</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>PhysicsImpl</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Asteroid</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
