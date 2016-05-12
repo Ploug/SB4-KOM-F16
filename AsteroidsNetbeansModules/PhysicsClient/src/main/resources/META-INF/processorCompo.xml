@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="processorPhysicsClient" >
-   <implementation class="dk.sdu.mmmi.cbse.physicsclient.PhysicsProcessActivate"/>
-   <reference bind="gotProcessorService" cardinality="1..1" interface="dk.sdu.mmmi.cbse.common.services.IEntityProcessingService" name="IEntityProcessingService" policy="dynamic" unbind="lostProcessorService"/>
+   <implementation class="dk.sdu.mmmi.cbse.physicsclient.ComponentInterfaceTest"/>
+   <reference bind="gotProcessorService" cardinality="1..1" interface="dk.sdu.mmmi.cbse.common.services.IEntityProcessingService" name="IEntityProcessingService" policy="static" />
    
- </scr:component>
+ </scr:component> 

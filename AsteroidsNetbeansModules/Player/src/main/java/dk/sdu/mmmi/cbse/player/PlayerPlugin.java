@@ -15,13 +15,13 @@ import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
 @ServiceProvider(service = IGamePluginService.class)
-public class EntityPlugin implements IGamePluginService
+public class PlayerPlugin implements IGamePluginService
 {
 
     private Map<String, Entity> world;
     private Entity player;
 
-    public EntityPlugin()
+    public PlayerPlugin()
     {
     }
 

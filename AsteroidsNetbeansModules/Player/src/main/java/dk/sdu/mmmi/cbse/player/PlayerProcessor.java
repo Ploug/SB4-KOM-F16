@@ -13,7 +13,7 @@ import java.util.Map;
 import org.openide.util.lookup.ServiceProvider;
 
 @ServiceProvider(service = IEntityProcessingService.class)
-public class PlayerControlSystem implements IEntityProcessingService
+public class PlayerProcessor implements IEntityProcessingService
 {
     @Override
     public void process(GameData gameData, Map<String, Entity> world, Entity entity)

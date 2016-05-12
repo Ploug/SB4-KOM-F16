@@ -35,3 +35,5 @@ AsteroidsServiceLoader/Player/target/
 /AsteroidsNetbeansModules/Huffman/dist/
 /AsteroidsNetbeansModules/Encode/nbproject/private/
 /AsteroidsNetbeansModules/Encode/build/
+/AsteroidsNetbeansModules/Asteroid/nbproject/
+/AsteroidsNetbeansModules/PhysicsImpl/nbproject/
