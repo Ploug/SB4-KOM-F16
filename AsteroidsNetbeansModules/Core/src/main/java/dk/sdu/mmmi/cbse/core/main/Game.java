@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import static dk.sdu.mmmi.cbse.common.data.EntityType.PLAYER;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
+import dk.sdu.mmmi.cbse.core.managers.GameInputProcessor;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -66,7 +66,7 @@ public class Game implements ApplicationListener
     @Override
     public void render()
     {
-
+        long before = System.currentTimeMillis();
         // clear screen to black
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

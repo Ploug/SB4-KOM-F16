@@ -45,7 +45,6 @@ public class WeaponPlugin implements IGamePluginService
     {
         this.world = world;
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-
         WeaponProcessorWrapper.reference = (WeaponProcessor)context.getBean("weaponProcess");
     }
 

@@ -99,11 +99,9 @@ public class PhysicsProcessorTest
     @Test
     public void testMovement()
     {
-        instance.process(gameData, world, entity);
 
         Vector2 velocity = new Vector2(3, 1);
         velocity.setMagnitude(10);
-
         entity.setVelocity(velocity);
         float oldX = entity.getX();
         float oldY = entity.getY();
@@ -111,7 +109,7 @@ public class PhysicsProcessorTest
         double a = oldX - entity.getX();
         double b = oldY - entity.getY();
         double distance = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-        assertTrue(distance >= 9.9); // in case of precision error
+        assertTrue(distance >= 9.9 && distance <= 10.1); // in case of precision error
 
     }
 
@@ -128,12 +126,20 @@ public class PhysicsProcessorTest
         }
         float[] shapeX =
         {
-            5
+            9
         };
         float[] shapeY =
         {
-            5
+            9
         };
+        bullet.setShapeX(shapeX);
+        bullet.setShapeY(shapeY);
+        world.put(bullet.getID(), bullet);
+        instance.process(gameData, world, entity);
+
+        assertTrue(entity.getIsHit());
+        shapeX[0] = 0;
+        shapeY[0] = 0;
         bullet.setShapeX(shapeX);
         bullet.setShapeY(shapeY);
         world.put(bullet.getID(), bullet);
@@ -166,7 +172,12 @@ public class PhysicsProcessorTest
         bullet.setShapeY(shapeY);
         world.put(bullet.getID(), bullet);
         instance.process(gameData, world, entity);
-
+        shapeX[0] = -1;
+        shapeY[0] = -1;
+        bullet.setShapeX(shapeX);
+        bullet.setShapeY(shapeY);
+        world.put(bullet.getID(), bullet);
+        instance.process(gameData, world, entity);
         assertFalse(entity.getIsHit());
 
     }

@@ -62,34 +62,23 @@ public class AsteroidPluginTest
     @Test
     public void testStart()
     {
-        System.out.println("start");
         AsteroidPlugin instance = new AsteroidPlugin();
         instance.start(gameData, world);
     }
 
-    /**
-     * Test of stop method, of class AsteroidPlugin.
-     */
     @Test
     public void testStop()
     {
-        System.out.println("stop");
         int startLength = world.size();
-
         AsteroidPlugin instance = new AsteroidPlugin();
         instance.start(gameData, world);
-
         instance.stop(gameData);
         assertTrue(startLength == world.size());
     }
 
-    /**
-     * Test of createAsteroid method, of class AsteroidPlugin.
-     */
     @Test
     public void testCreateAsteroid()
     {
-        System.out.println("createAsteroid");
         Entity parent = null;
         Entity result = AsteroidPlugin.createAsteroid(gameData, parent);
         assertNotNull(result);

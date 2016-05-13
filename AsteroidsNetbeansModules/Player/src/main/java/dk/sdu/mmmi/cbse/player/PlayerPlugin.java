@@ -38,7 +38,6 @@ public class PlayerPlugin implements IGamePluginService
     {
         Entity playerShip = new Entity();
         playerShip.setType(PLAYER);
-
         playerShip.setPosition(gameData.getDisplayWidth() / 2, gameData.getDisplayHeight() / 2);
         HashSet<EntityType> collidableTypes = new HashSet();
         collidableTypes.add(ASTEROIDS);
@@ -48,7 +47,6 @@ public class PlayerPlugin implements IGamePluginService
         playerShip.setMaxSpeed(300);
         playerShip.setAcceleration(200);
         playerShip.setDeacceleration(10);
-
         playerShip.setShapeX(new float[4]);
         playerShip.setShapeY(new float[4]);
         playerShip.setVelocity(new Vector2(0, 0));
@@ -56,7 +54,6 @@ public class PlayerPlugin implements IGamePluginService
         playerShip.setRotationSpeed(180);
         playerShip.setColor(Color.green);
         playerShip.setLife(25);
-
         playerShip.setRadius(4);
 
         return playerShip;
